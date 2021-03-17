@@ -1,0 +1,46 @@
+<?php
+
+use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\userController;
+use Illuminate\Support\Facades\Route;
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+Route::get('/contacter-nous', function () {
+    return view('pages.contact');
+})->name('contact.path');
+
+
+
+Route::get('/', function () {
+    return view('welcome');
+})->name('home.path');
+
+
+
+Route::get('confirmation/{token}',[userController::class,'confirmAccount'])->name('confirm.account');
+
+
+
+Route::middleware('auth')->prefix('mon-compte')->group(function () {
+		Route::get('/',[dashboardController::class,'myAccount'])->name('user.account');
+		Route::get('/money',[dashboardController::class,'myInvestments'])->name('user.money');
+		Route::get('/transactions',[dashboardController::class,'myTransaction'])->name('user.transaction');
+		Route::get('/mes-filleules',[dashboardController::class,'myFilleules'])->name('user.filleules.account');
+		Route::get('/make-requests/{type}',[dashboardController::class,'makeRequest'])->name('user.requests');
+});
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
