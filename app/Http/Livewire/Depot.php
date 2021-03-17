@@ -10,11 +10,11 @@ class Depot extends Component
 {
 
 	public $pack,$payement,$r_money;
-
+	
 	protected $rules = ['pack' => 'required','payement' => 'required|string'];
 
 
-  protected $messages = [
+  	protected $messages = [
         'pack.required' => 'Veuillez choisir un pack',
         'payement.required' => 'Veuillez choisir votre moyen de payement',
         'payement.string' => 'Choississez un moyen de payement valide',
@@ -24,7 +24,7 @@ class Depot extends Component
 
 	public function updatedPack()
 	{
-		$data = PAck::findOrFail($this->pack);
+		$data = Pack::findOrFail($this->pack);
 		$this->r_money = $data->money_r;
 	}
 
@@ -33,7 +33,6 @@ class Depot extends Component
 	{
 		$this->validate();
 		Transaction::create(['user_id' => auth()->user()->id,'pack_id' => $this->pack,'payement' => $this->payement]);
-
 		session()->flash('message','Demande envoyé un agent vous contactera pour finaliser votre demande!');
 		$this->payement = null;
 		$this->pack = null;
@@ -44,7 +43,6 @@ class Depot extends Component
 
     public function render()
     {
-
     	$packs = Pack::all();
         return view('livewire.depot',compact("packs"));
     }
