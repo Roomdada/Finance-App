@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -58,16 +59,20 @@ class User extends Authenticatable
     }
 
 
-    public function MyParrain(int $payload, string $key) 
+    public function MyParrain(int $payload, string $key)
     {
         return $payload == 1 ? User::where('code_parrain',$key)->first() : User::where('my_parrain',$key)->get();
     }
 
 
+    public function transaction(){
+
+        return $this->hasMany('App\Models\Transaction');
+    }
 
 
     public function role()
     {
-        return belongsTo('App\Models\Role');
+        return $this->belongsTo('App\Models\Role');
     }
 }

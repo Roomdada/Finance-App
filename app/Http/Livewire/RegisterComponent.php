@@ -20,7 +20,7 @@ class RegisterComponent extends Component
     public $firstname,$lastname,$genre,$country,$password,$code_parrain,$phone,$email,$password_confirmation;
 
 
-    protected $rules  = 
+    protected $rules  =
     [
         'firstname' => 'required|string',
         'lastname' => 'required|string',
@@ -41,7 +41,7 @@ class RegisterComponent extends Component
 		if ($this->password != $this->password_confirmation) {
 		    session()->flash('error','Mots de passes differents');
 		    return back();
-			
+
 		}
 
 		 $data = User::create([
@@ -57,15 +57,13 @@ class RegisterComponent extends Component
             'password' => Hash::make($this->password),
         ]);
 		$this->refreshInput();
-		
+
         Mail::to($data->email)->send(new AccountConfirmation($data));
 
-		session()->flash('message','Bravo,votre inscription a été prise en compte veuillez la finalisée via le mssage reçu par email');
+		session()->flash('message','Bravo,votre inscription a été prise en compte veuillez la finalisée via le message reçu par email');
 		return back();
-		
+
 	}
-
-
 
 	private function refreshInput()
 	{
