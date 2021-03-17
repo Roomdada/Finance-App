@@ -34,7 +34,7 @@ class Depot extends Component
 		$this->validate();
 		Transaction::create(['user_id' => auth()->user()->id,'pack_id' => $this->pack,'payement' => $this->payement]);
 
-		session()->flash('message','Demande envoyé un agent vous contactera!');
+		session()->flash('message','Demande envoyé un agent vous contactera pour finaliser votre demande!');
 		$this->payement = null;
 		$this->pack = null;
 		$this->r_money = null;

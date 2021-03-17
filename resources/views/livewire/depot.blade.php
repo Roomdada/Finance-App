@@ -1,6 +1,12 @@
 <div>
 <form id="form-send-money" method="post">
-   
+        <div>
+             @if(session()->has('message'))
+              <div class="container mb-2 mt-2 alert alert-success text-center">
+                  {{session()->get('message')}}
+              </div>
+            @endif
+        </div>
         <div class="form-group">
             <label for="inputCountry">Moyens de paiement</label>
             <select wire:model.lazy='payement' class="custom-select" id="inputCountry" name="country_id">
