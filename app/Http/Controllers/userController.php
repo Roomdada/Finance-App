@@ -14,9 +14,7 @@ class userController extends Controller
 	    	$user = $user->update(['validation_1' => 1]);
 	    	session()->flash('message','Votre compte a été confirmé, connecter vous maintenant');
 	    	return redirect()->route('login');
-    		
     	}
-
     	session()->flash('message','Votre compte a été déja confirmé');
     	return redirect()->route('login');
     }

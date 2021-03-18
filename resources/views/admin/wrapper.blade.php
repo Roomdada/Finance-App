@@ -65,6 +65,13 @@
 						<div class="menu-title">Demande de depot</div>
 					</a>
 				</li>
+                <li>
+					<a href="{{ route('admin.transaction.verfication','depot') }}">
+						<div class="parent-icon icon-color-2"><i class="bx bx-envelope"></i>
+						</div>
+						<div class="menu-title">Depot effectué</div>
+					</a>
+				</li>
 				<li>
 					<a href="{{ route('admin.transaction','retrait') }}">
 						<div class="parent-icon icon-color-3"> <i class="bx bx-conversation"></i>
@@ -72,6 +79,16 @@
 						<div class="menu-title">Demande de retrait</div>
 					</a>
 				</li>
+                <li>
+					<a href="{{ route('admin.transaction.verfication','retrait') }}">
+						<div class="parent-icon icon-color-3"> <i class="bx bx-conversation"></i>
+						</div>
+						<div class="menu-title"> retraits effectués</div>
+					</a>
+				</li>
+
+
+
                 <li>
 					<a href="{{ route('admin.Search') }}">
 						<div class="parent-icon icon-color-3"> <i class="bx bx-search"></i>
@@ -215,6 +232,7 @@
 	<script src="/admin/assets/plugins/vectormap/jquery-jvectormap-au-mill.js"></script>
 	<script src="/admin/assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
 	<script src="/admin/assets/js/index.js"></script>
+
 	<!-- App JS -->
 	<script src="/admin/assets/js/app.js"></script>
 	<script>

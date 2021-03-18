@@ -1,10 +1,9 @@
 @extends('admin.wrapper')
 @section('container')
-
 <div class="card">
     <div class="card-body">
         <div class="card-title">
-            <h4 class="mb-0">Demande de {{ $type }} <span class="badge badge-primary">{{ $informationTransaction->count() }}</span></h4>
+            <h4 class="mb-0">Demande de {{ $type }}  <span class="badge badge-primary">{{ $informationTransaction->count() }}</span></h4>
         </div>
         <hr/>
         @if(\Session::has('success'))
@@ -39,7 +38,7 @@
                                 <td>{{ $transaction->pack->money_r*550 }} XOF</td>
                                 <td>{{ $transaction->created_at->diffForHumans() }}</td>
                                 <td>
-                                     <a class="btn btn-outline-primary" href="{{ route('admin.Confirm',$transaction->id)}}"> Confirmer</a>
+                                     <a class="btn btn-outline-primary" href="{{ route('admin.remove',$transaction->id)}}"> marquer la transaction comme non faite</a>
                                 </td>
                             </tr>
                     @endforeach

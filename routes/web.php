@@ -45,6 +45,8 @@ Route::middleware('auth')->prefix('admin')->group(function(){
         Route::get('/myprofil',[adminController::class,'ViewProfil'])->name('admin.profil');
         Route::get('/confirm/{id}',[adminController::class,'ActionConfirm'])->name('admin.Confirm');
         Route::get('/search',[adminController::class,'ActionSearch'])->name('admin.Search');
+        Route::get('/transaction/verfication/{type}',[adminController::class,'LookingForTransaction'])->name('admin.transaction.verfication');
+        Route::get('/remove/{id}',[adminController::class,'SetAsUnvailable'])->name('admin.remove');
 
 });
 
